@@ -1,0 +1,28 @@
+---
+
+- name: Preparing disks for LVM Playbook (SAS 9.4)
+  connection: local
+  hosts: 127.0.0.1
+  tasks:
+
+    - name: Prepare devices for LVM.
+      parted:
+        label: "{{ item.label }}"
+        device: "/dev/{{ item.device }}"
+        number: "{{ item.device_number }}"
+        flags: [ lvm ]
+        state: present
+        part_start: 0%
+        part_end: 100%
+
+      with_items:
+        - { label: "WORK1", device: "sdb", device_number: "2" }
+        - { label: "WORK2", device: "sdc", device_number: "3" }
+        - { label: "WORK3", device: "sdd", device_number: "4" }
+        - { label: "WORK4", device: "sde", device_number: "5" }
+        - { label: "DATA1", device: "sdf", device_number: "6" }
+        - { label: "DATA1", device: "sdg", device_number: "7" }
+        - { label: "UTILLOC1", device: "sdh", device_number: "8" }
+        - { label: "UTILLOC2", device: "sdi", device_number: "9" }
+
+

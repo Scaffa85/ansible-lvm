@@ -1,0 +1,11 @@
+-
+
+application_disks:
+  - { device: "/dev/sdb", device_number: "2" }
+  - { device: "/dev/sdc", device_number: "3" } 
+  - { device: "/dev/sdd", device_number: "4" }
+  - { device: "/dev/sde", device_number: "5" }
+  - { device: "/dev/sdf", device_number: "6" }
+  - { device: "/dev/sdg", device_number: "7" }
+  - { device: "/dev/sdh", device_number: "8" }
+  - { device: "/dev/sdi", device_number: "9" }
