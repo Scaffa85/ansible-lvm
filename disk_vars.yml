@@ -1,0 +1,9 @@
+disks:
+  - {label: WORK1,  device: /dev/sdb, device_number: 2}
+  - {label: WORK2, device: /dev/sdc, device_number: 3}
+  - {label: WORK3, device: /dev/sdd, device_number: 4}
+  - {label: WORK4, device: dev/sde, device_number: 5}
+  - {label: DATA1, device: /dev/sdf, device_number: 6}
+  - {label: DATA2, device: /dev/sdg, device_number: 7}
+  - {label: UTILLOC1, device: /dev/sdh, device_number: 8}
+  - {label: UTILLOC2, device: /dev/sdi, device_number: 9}

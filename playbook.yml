@@ -1,5 +1,4 @@
 ---
-
 - name: Preparing disks for LVM Playbook (SAS 9.4)
   connection: local
   hosts: 127.0.0.1
@@ -7,15 +6,15 @@
    
     - name: Include variables
       include_vars:
-        name: vars
-        file: vars.yml
+        name: disk_vars
+        file: disk_vars.yml
 
     - name: Workaround for non-idempotent parted module
       shell: /usr/sbin/fdisk -l | /usr/bin/grep "{{ item.device }}1"
       register: disk_created
 
       with_items:
-        - "{{ disks }}"
+        - "{{ disk_vars.disks }}"
 
     - name: Prepare devices for LVM.
       parted:
@@ -29,12 +28,5 @@
       when: not {{ item.device }}1 in disk_created.stdout
 
       with_items:
-        - { label: "WORK1", device: "sdb", device_number: "2" }
-        - { label: "WORK2", device: "sdc", device_number: "3" }
-        - { label: "WORK3", device: "sdd", device_number: "4" }
-        - { label: "WORK4", device: "sde", device_number: "5" }
-        - { label: "DATA1", device: "sdf", device_number: "6" }
-        - { label: "DATA1", device: "sdg", device_number: "7" }
-        - { label: "UTILLOC1", device: "sdh", device_number: "8" }
-        - { label: "UTILLOC2", device: "sdi", device_number: "9" }
+        - "{{ disk_vars.disks }}"
 
